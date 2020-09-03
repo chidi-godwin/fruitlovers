@@ -1,0 +1,38 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!Doctype html>
+<html>
+
+<head>
+    <title>fruilover: Login</title>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %} 
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h1>Login</h1>
+    {{ wtf.quick_form(form) }}
+    <p>
+        <ul>
+            {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <ul>
+            {% for error in form.password.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</body>
+
+</html>
