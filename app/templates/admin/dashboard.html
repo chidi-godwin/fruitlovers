@@ -1,12 +1,6 @@
-{% extends "base.html" %}
+{% extends "admin/base.html" %}
 
 {% block title %}Fruitlovers{% endblock %}
-
-{% block logout %}
-<li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
-{% endblock logout %}
-
-
 
 {% block page_content %}
 <div class="page-header">

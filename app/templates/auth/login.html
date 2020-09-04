@@ -6,7 +6,10 @@
     Fruitlovers - Login
 {% endblock title %}
     
-
+{% block navlist %}
+    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+{% endblock navlist %}
+    
 {% block page_content %}
     <div class="page-header">
         <h1>Login</h1>

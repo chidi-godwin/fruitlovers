@@ -20,9 +20,9 @@ Fruitlovers
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                {% block logout %}
+                {% block navlist %}
                 <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-                {% endblock logout %}
+                {% endblock navlist %}
             </ul>
         </div>
     </div>

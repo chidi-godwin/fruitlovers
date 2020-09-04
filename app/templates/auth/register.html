@@ -5,6 +5,12 @@
 {% block title %}
     Fruitlovers - Register
 {% endblock title %}
+
+
+{% block navlist %}
+    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+{% endblock navlist %}
+    
     
 
 {% block page_content %}
