@@ -29,6 +29,6 @@ def create_app(config_name):
     app.register_blueprint(main_bp)
 
     from .admin import bp as admin_bp
-    app.register_blueprint(admin_bp)
+    app.register_blueprint(admin_bp, url_prefix='/admin')
     
     return app

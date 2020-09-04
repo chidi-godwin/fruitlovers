@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+    Fruitlovers - Admin Login
+{% endblock title %}
+    
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>Login</h1>
+    </div>
+    {{ wtf.quick_form(form) }}
+    <p>
+        <ul>
+            {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
+        <ul>
+            {% for error in form.password.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+{% endblock page_content %}

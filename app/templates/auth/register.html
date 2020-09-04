@@ -1,14 +1,16 @@
+{% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-<!Doctype html>
-<html>
 
-<head>
-    <title>fruilover: Register</title>
-</head>
+{% block title %}
+    Fruitlovers - Register
+{% endblock title %}
+    
 
-<body>  
-    <h1>Register</h1>
+{% block page_content %}
+    <div class="page-header">
+        <h1>Register</h1>
+    </div>
     {{ wtf.quick_form(form) }}
     <p>
         <ul>
@@ -31,6 +33,4 @@
             {% endfor %}
         </ul>
     </p>
-</body>
-
-</html>
+{% endblock page_content %}

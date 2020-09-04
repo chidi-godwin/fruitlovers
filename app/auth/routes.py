@@ -2,7 +2,7 @@ from app import db
 from app.auth import bp
 from .forms import RegisterForm, LoginForm
 from flask import render_template, redirect, url_for, flash, request
-from app.models import User
+from app.models import User, Role
 from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 
@@ -28,7 +28,7 @@ def login():
 @bp.route('/logout', methods=['GET'])
 def logout():
     logout_user()
-    return url_for('auth.login')
+    return redirect(url_for('auth.login'))
 
 
 @bp.route('/register', methods=['GET', 'POST'])
@@ -42,7 +42,8 @@ def register():
             last_name=form.last_name.data,
             email=form.email.data,
             username=form.username.data,
-            phone=form.username.data
+            phone=form.username.data,
+            role = Role.query.get(1)
         )
         user.set_password(form.password.data)
         db.session.add(user)

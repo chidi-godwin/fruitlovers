@@ -49,16 +49,14 @@ class Discount(db.Model):
     __tablename__ = 'discounts'
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(64), nullable=False, unique=True)
+    code_type = db.Column(db.String(64), nullable=False)
     rate = db.Column(db.Float)
-    amount = db.Column(db.Float)
     expiry_date = db.Column(db.Date)
 
     def __repr__(self):
-        return f"<Dicount {self.code}>"
+        return f"<Discount {self.code}>"
 
 
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-
-

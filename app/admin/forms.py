@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, FloatField, SelectField, DateField, RadioField, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, FloatField, SelectField, RadioField, ValidationError
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from app.models import User
 
@@ -19,8 +20,8 @@ class AddUserForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(), Length(min=8)])
     confirm_password = PasswordField(
         'Confirm_Password', validators=[EqualTo('password', 'password doesn\'t match')])
-    role = RadioField('Role', validators=DataRequired(), choices=[('Sales', 'Sales'), ('Admin', 'Admin')])
-    submit = SubmitField('Create')
+    role = RadioField('Role', validators=[DataRequired()], choices=[('Sales', 'Sales'), ('Admin', 'Admin')])
+    submit = SubmitField('Add')
 
     def validate_username(self, username):
 
@@ -35,9 +36,11 @@ class AddUserForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 class DiscountForm(FlaskForm):
+    code = StringField('Code', validators=[DataRequired()])
+
     amount_percentage = FloatField(
         'Amount/Percentage', validators=[DataRequired()])
     code_type = SelectField('Code Type', validators=[DataRequired()], choices=[
                             ('Percentage', 'Percentage'), ('Amount', 'Amount')])
-    expiry_date = DateField('Expiration Date', validators=(DataRequired()))
+    expiry_date = DateField('Expiration Date', validators=[DataRequired()])
     submit = SubmitField('Create Discount')
