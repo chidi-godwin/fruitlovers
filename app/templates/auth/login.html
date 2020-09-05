@@ -8,6 +8,8 @@
     
 {% block navlist %}
     <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+    <li><a href="{{ url_for('admin') }}">Admin</a></li>
+    {{ super() }}
 {% endblock navlist %}
     
 {% block page_content %}
