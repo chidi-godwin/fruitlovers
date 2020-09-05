@@ -1,1 +1,1 @@
-web: gunicorn fruitlover:app
+web: flask db upgrade; gunicorn fruitlover:app
